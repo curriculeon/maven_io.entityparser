@@ -10,14 +10,27 @@ import java.util.Scanner;
  */
 public class FileReader {
     private final String filename;
+    private File file;
+    Scanner scanner;
 
     public FileReader(String filename){
-        this.filename = filename;
+        this.filename = "src/main/resources" + filename;
+        this.file = new File(this.filename);
     }
 
     @Override
     public String toString(){
-        return null;
+        String contents = new String();
+        try {
+            scanner = new Scanner(this.file);
+            while (scanner.hasNextLine()) {
+                contents += scanner.nextLine();
+                if(scanner.hasNextLine()) contents+='\n';
+            }
+        }catch (IOException e){
+            throw new Error(e);
+        }
+        return contents;
     }
 
 }
