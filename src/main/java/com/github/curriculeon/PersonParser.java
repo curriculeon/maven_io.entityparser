@@ -8,16 +8,34 @@ import java.io.File;
 public class PersonParser implements Parser<Person> {
     @Override
     public Person parseString(String data) {
-        return null;
+        String[] person=data.split("\n");
+        return new Person(Long.parseLong(person[0]), person[1], person[2]);
     }
 
     @Override
-    public Person[] parseStrings(String[] data) {
-        return new Person[0];
+    public Person[] parseStrings(String[] data)
+    {
+        Person[] persons=new Person[data.length];
+        int index=0;
+        for (String strPerson: data
+             ) {
+            persons[index]=parseString(strPerson);
+            index++;
+        }
+        return persons;
     }
 
     @Override
     public Person[] parseFile(File data) {
-        return new Person[0];
+        String text=new FileReader(data.getPath()).toString();
+        String [] arrValues=text.split("\n");
+        Person [] persons=new Person[arrValues.length/3];
+        int personIndex=0;
+        for (int index = 0;index<arrValues.length;) {
+            persons[personIndex]=new Person (Long.parseLong(arrValues[index]),arrValues[index+1], arrValues[index+2]);
+            personIndex++;
+            index+=3;
+        }
+        return persons;
     }
 }
