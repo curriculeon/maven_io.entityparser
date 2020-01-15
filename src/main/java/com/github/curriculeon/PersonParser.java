@@ -2,6 +2,9 @@ package com.github.curriculeon;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -23,25 +26,27 @@ public class PersonParser implements Parser<Person> {
     @Override
     public Person[] parseStrings(String[] data) {
         Person[] persons = new Person[data.length];
-        for(int i=0; i< data.length; i++){
-            String [] temp = data[i].split("\n");
-            this.id= Long.parseLong(temp[0]);
-            this.first = String.valueOf(temp[1]);
-            this.last = String.valueOf(temp[2]);
-            persons[i] = new Person(id, first, last);
+        int j=0;
+        for(String i: data){
+            persons[j] = parseString(i);
+            j++;
         }
         return persons;
     }
 
     @Override
     public Person[] parseFile(File data) {
-        FileReader file = new FileReader(data.getName());
-        String fileContents = file.toString();
-        String[] fileStrings = fileContents.split("\n");
+        String fileName = String.valueOf(data);
+        FileReader file = new FileReader(fileName);
+        String[] fileStrings = file.toString().split("\n");
+        String[] selectedLines = new String[fileStrings.length/3];
+        int j=0;
         for(int i=0; i<fileStrings.length; i++) {
-
-            }
-        Person[] persons= parseStrings(fileContents);
+            selectedLines[j] = fileStrings[i] + "\n" + fileStrings[i+1] + "\n" + fileStrings[i+2];
+            i+=2;
+            j++;
+        }
+        Person[] persons = parseStrings(selectedLines);
         return persons;
     }
 }
