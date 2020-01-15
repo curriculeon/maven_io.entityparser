@@ -56,9 +56,9 @@ public class ParseStringsTest {
         String firstName2 = "Ali";
         String lastName2 = "Hyman";
         String personData2 = new StringJoiner("\n")
-                .add(id1.toString())
-                .add(firstName1)
-                .add(lastName1)
+                .add(id2.toString()) //corrected for sending id1
+                .add(firstName2) //corrected for sending firstname1
+                .add(lastName2) //corrected for sending lastname1
                 .toString();
 
         String[] personData = {personData1, personData2};
@@ -96,9 +96,9 @@ public class ParseStringsTest {
         String firstName2 = "Bezawit";
         String lastName2 = "Maine";
         String personData2 = new StringJoiner("\n")
-                .add(id1.toString())
-                .add(firstName1)
-                .add(lastName1)
+                .add(id2.toString()) //corrected for sending id1
+                .add(firstName2) //corrected for sending firstname1
+                .add(lastName2) //corrected for sending lastname1
                 .toString();
 
         String[] personData = {personData0, personData1, personData2};

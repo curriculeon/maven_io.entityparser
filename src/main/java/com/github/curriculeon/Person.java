@@ -9,35 +9,41 @@ public class Person {
     private String lastName;
 
     public Person(Long id, String firstName, String lastName) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 
     public Long getId() {
-        return null;
+        return this.id;
     }
 
     public void setId(Long id) {
+        this.id=id;
     }
 
     public String getFirstName() {
-        return null;
+        return this.firstName;
     }
 
     public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return null;
+        return this.lastName;
     }
 
     public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + this.id +
+                ", firstName='" + this.firstName + '\'' +
+                ", lastName='" + this.lastName + '\'' +
                 '}';
     }
 
