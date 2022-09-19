@@ -78,7 +78,7 @@ public class ParseFileTest {
         Long id1 = 0L;
         String name1 = "milo the dog";
         Date date1 = DateParser.parseDate("06-14-2015");
-        
+
         Long id2 = 1L;
         String name2 = "sam the snake";
         Date date2 = DateParser.parseDate("09-07-2007");
@@ -86,13 +86,13 @@ public class ParseFileTest {
         Long id3 = 2L;
         String name3 = "zula the kitty";
         Date date3 = DateParser.parseDate("01-01-2005");
-        
+
         Pet pet1 = new Pet(id1, name1, date1);
         Pet pet2 = new Pet(id2, name2, date2);
         Pet pet3 = new Pet(id3, name3, date3);
-        
+
         Pet[] expected = new Pet[]{pet1, pet2, pet3};
-        
+
         String filePath = "/creature/allpet.pets";
         File fileOfData = new File(filePath);
 
